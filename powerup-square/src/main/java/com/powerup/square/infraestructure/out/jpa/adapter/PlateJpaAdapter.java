@@ -17,6 +17,34 @@ public class PlateJpaAdapter implements IPlatePersistencePort{
     private final IPlateMapper plateMapper;
 
     @Override
+    public void savePlate(Plate plate) {
+        PlateEntity plateEntity = plateMapper.toEntity(plate);
+        plateRepository.save(plateEntity);
+    }
+
+    @Override
+    public List<Plate> getAllPlates() {
+        return null;
+    }
+
+    @Override
+    public Plate getPlate(Long id) {
+        return plateMapper.toPlate(plateRepository.findByid(id));
+    }
+
+    @Override
+    public void updatePlate(Plate plate) {
+
+    }
+
+    @Override
+    public void deletePlate(Long id) {
+
+    }
+
+
+
+    /*  @Override
     public void savePlate(Plate plate){
         PlateEntity plateEntity = plateMapper.toEntity(plate);
         plateRepository.save(plateEntity);
@@ -36,6 +64,6 @@ public class PlateJpaAdapter implements IPlatePersistencePort{
     @Override
     public void updatePlate(Plate plate) {
 
-    }
+    }*/
 
 }

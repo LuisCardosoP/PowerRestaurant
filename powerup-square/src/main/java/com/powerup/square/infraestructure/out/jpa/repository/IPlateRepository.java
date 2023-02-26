@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPlateRepository extends JpaRepository<PlateEntity, Long> {
+
+    PlateEntity findByid(Long id);
+
+    void deleteById(Long id);
 }

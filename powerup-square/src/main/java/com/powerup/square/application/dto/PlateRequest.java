@@ -10,7 +10,8 @@ import javax.validation.constraints.Pattern;
 @Setter
 public class PlateRequest {
 
-
+    @NotBlank
+    private Long id;
     @NotBlank
     private String name;
 

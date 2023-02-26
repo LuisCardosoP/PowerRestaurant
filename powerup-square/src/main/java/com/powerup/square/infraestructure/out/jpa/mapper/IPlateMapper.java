@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
 import java.util.Optional;
 
 @Mapper(componentModel = "spring",
@@ -21,5 +22,7 @@ public interface IPlateMapper {
             @Mapping(target="urlImage", source="urlImage")
     })
     PlateEntity toEntity(Plate plate);
-    Plate toPlate(Optional<PlateEntity> PlateEntity);
+    Plate toPlate(PlateEntity PlateEntity);
+
+    List<Plate> toPlateLis(List<PlateEntity> plateEntityList);
 }

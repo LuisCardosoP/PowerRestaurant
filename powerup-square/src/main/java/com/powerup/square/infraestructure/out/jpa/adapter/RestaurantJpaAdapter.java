@@ -13,7 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class RestaurantJpaAdapter implements IRestaurantPersistencePort {
+public class    RestaurantJpaAdapter implements IRestaurantPersistencePort {
     private final IRestaurantRepository restaurantRepository;
     private final IRestaurantMapper restaurantMapper;
 

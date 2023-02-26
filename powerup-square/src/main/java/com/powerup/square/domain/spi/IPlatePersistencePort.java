@@ -10,7 +10,12 @@ public interface IPlatePersistencePort {
     void savePlate(Plate plate);
 
     List<Plate> getAllPlates();
+
+
     Plate getPlate(Long id);
+
     void updatePlate(Plate plate);
+
+    void deletePlate(Long id);
 
 }

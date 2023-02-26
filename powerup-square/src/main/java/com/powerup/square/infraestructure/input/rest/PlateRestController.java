@@ -25,26 +25,11 @@ public class PlateRestController {
 
     private final IPlateHandler plateHandler;
 
-    @Operation(summary = "Add a new plate")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Plate created", content = @Content),
-            @ApiResponse(responseCode = "409", description = "Plate already exists", content = @Content)
-    })
+
     @PostMapping("/createPlate/")
     public ResponseEntity<Void> savePlateEntity(@RequestBody @Validated PlateRequest plateRequest){
         plateHandler.savePlate(plateRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @Operation(summary = "Get plates")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Plate gotten", content = @Content),
-            @ApiResponse(responseCode = "409", description = "Plate doesn't exists", content = @Content)
-    })
-    @GetMapping("/getPlates/")
-    public ResponseEntity<List<PlateEntity>> getAllPlates(){
-
-        return null;
     }
 
 
@@ -55,20 +40,18 @@ public class PlateRestController {
     }
 
 
-
-
-
-
-    @Operation(summary = "change plate")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Plate edited successfully", content = @Content)
-    })
-
     @PutMapping("/putPlate/")
     public ResponseEntity<Void> editPlateEntity(@RequestBody PlateRequest plateRequest){
         plateHandler.savePlate(plateRequest);
         return null;
     }
+
+    @GetMapping("/")
+    public ResponseEntity<List<PlateResponse>>getAllPlates(){
+        return ResponseEntity.ok(plateHandler.getAllPlates());
+    }
+
+
 
     /*@PutMapping("/updatePlate/{id}")
     public ResponseEntity<Void> updatePlate(@PathVariable("id") Long id, @RequestBody @Validated PlateResponse plateResponse) {
